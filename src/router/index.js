@@ -26,48 +26,160 @@ export const constantRouterMap = [
   { path: '/404', component: () => import('@/views/404'), hidden: true },
 
   {
-    path: '/',
+    path: '',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
-    hidden: true,
+    redirect: 'home',
     children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
+      path: 'home',
+      name: 'Home',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '首页', icon: 'homepage_fill' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/aduit',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/aduit/seller',
+    name: 'Aduit',
+    meta: { title: '审核', icon: 'task_fill' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'seller',
+        name: 'Seller',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: '商家审核', icon: '' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'rider',
+        name: 'Rider',
+        component: () => import('@/views/aduit/rider'),
+        meta: { title: '骑手审核', icon: '' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/manage',
+    component: Layout,
+    redirect: '/manage/region',
+    name: 'Manage',
+    meta: { title: '管理', icon: 'coordinates_fill' },
+    children: [
+      {
+        path: 'region',
+        name: 'Region',
+        component: () => import('@/views/table/index'),
+        meta: { title: '地域管理', icon: '' }
+      },
+      {
+        path: 'city',
+        name: 'City',
+        component: () => import('@/views/table/index'),
+        meta: { title: '城市管理', icon: '' }
+      },
+      {
+        path: 'area',
+        name: 'Area',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '片区管理', icon: '' }
+      },
+      {
+        path: 'destination',
+        name: 'Destination',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '目的地管理', icon: '' }
+      }
+    ]
+  },
+
+  {
+    path: '/statistics',
+    component: Layout,
+    redirect: '/statistics/pv',
+    name: 'Statistics',
+    meta: { title: '统计', icon: 'chart' },
+    children: [
+      {
+        path: 'pv',
+        name: 'PV',
+        component: () => import('@/views/table/index'),
+        meta: { title: '访问量', icon: '' }
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import('@/views/table/index'),
+        meta: { title: '注册量', icon: '' }
+      },
+      {
+        path: 'order',
+        name: 'Order',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '订单量', icon: '' }
+      },
+      {
+        path: 'delivery',
+        name: 'Delivery',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '配送量', icon: '' }
+      }
+    ]
+  },
+
+  {
+    path: '/setup',
+    component: Layout,
+    redirect: '/setup/price',
+    name: 'Setup',
+    meta: { title: '设置', icon: 'setup_fill' },
+    children: [
+      {
+        path: 'price',
+        name: 'Price',
+        component: () => import('@/views/table/index'),
+        meta: { title: '费用设置', icon: '' }
+      },
+      {
+        path: 'system',
+        name: 'System',
+        component: () => import('@/views/table/index'),
+        meta: { title: '系统设置', icon: '' }
+      }
+    ]
+  },
+
+  {
+    path: '/market',
     component: Layout,
     children: [
       {
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '营销', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/admin',
+    name: 'User',
+    meta: { title: '用户', icon: 'peoples' },
+    children: [
+      {
+        path: 'admin',
+        name: 'Admin',
+        component: () => import('@/views/table/index'),
+        meta: { title: '普通管理员', icon: '' }
+      },
+      {
+        path: 'superAdmin',
+        name: 'SuperAdmin',
+        component: () => import('@/views/table/index'),
+        meta: { title: '超级管理员', icon: '' }
       }
     ]
   },

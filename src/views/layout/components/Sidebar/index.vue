@@ -8,6 +8,7 @@
       background-color="#304156"
       text-color="#bfcbd9"
       active-text-color="#409EFF"
+      :default-openeds="openeds"
     >
       <sidebar-item :routes="routes"></sidebar-item>
     </el-menu>
@@ -20,6 +21,12 @@ import SidebarItem from './SidebarItem'
 
 export default {
   components: { SidebarItem },
+  data() {
+    return {
+      openeds: ['Aduit','Manage'],
+      uniqueOpened: false
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar'
