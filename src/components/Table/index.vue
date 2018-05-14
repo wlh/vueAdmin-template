@@ -7,9 +7,9 @@
           {{scope.row[column.name]}}
         </template>
       </el-table-column>
-      <el-table-column align="center" v-if='isDisplayAction' :label="tableActions.label" width="230" class-name="small-padding fixed-width">
+      <el-table-column align="center" v-if='isDisplayAction' :label='tableActions.label' width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button v-for='button in tableActions.buttons' :key='button.id' :type="button.type" size="mini" @click="button.handler(scope.row)">{{ button.name }}</el-button>
+          <el-button v-for='btn in tableActions.buttons' :key='btn.id' :type='btn.type' size="mini" @click="button.handler(scope.row)">{{ btn.name }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -25,37 +25,37 @@ export default {
       required: true
     },
     columns: {
-        type: Array,
-        required: true
+      type: Array,
+      required: true
     },
     actions: {
-        type: Object
+      type: Object
     }
   },
   data() {
-      return {
-          isDisplayAction: false,
-          isDisplayPagination: false
-      }
+    return {
+      isDisplayAction: true,
+      isDisplayPagination: false
+    }
   },
   computed: {
     tableList() {
-        if(!this.tableData){
-            this.tableList = [];
-        }
-      return this.tableData;
+      if (!this.tableData) {
+        this.tableList = []
+      }
+      return this.tableData
     },
     formThead() {
-        if(!this.columns){
-            this.columns = [];
-        }
-        return this.columns;
+      if (!this.columns) {
+        this.columns = []
+      }
+      return this.columns
     },
     tableActions() {
-        if(this.actions){
-            this.isDisplayAction = true;
-        }
-        return this.actions;
+      if (this.actions) {
+        this.isDisplayAction = true
+      }
+      return this.actions
     }
   }
 }

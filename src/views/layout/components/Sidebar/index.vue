@@ -23,7 +23,7 @@ export default {
   components: { SidebarItem },
   data() {
     return {
-      openeds: ['Aduit','Manage'],
+      openeds: ['Aduit', 'Manage'],
       uniqueOpened: false
     }
   },
